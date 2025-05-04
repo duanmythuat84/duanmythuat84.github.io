@@ -1,160 +1,531 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Bạo Lực Học Đường - Mặt Tối Của Trường Lớp</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bạo Lực Học Đường - Mặt Tối Của Trường Lớp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=New+Rocker&family=Roboto:wght@300;400;700&display=swap');
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at top left, #1a1a1a, #000000);
-      color: #e74c3c;
-      font-family: 'New Rocker', cursive;
-      text-shadow: 1px 1px 3px black;
-      overflow-x: hidden;
-    }
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #ff4d4d;
+            --bg-dark: #0a0a0a;
+            --text-light: #f5f5f5;
+        }
 
-    header {
-      background-color: black;
-      padding: 30px;
-      text-align: center;
-      border-bottom: 2px solid #e74c3c;
-    }
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
 
-    header h1 {
-      font-size: 2.5em;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top left, #1a1a1a, #000000);
+            color: var(--primary-color);
+            font-family: 'Roboto', sans-serif;
+            text-shadow: 1px 1px 3px black;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #e74c3c, 0 0 20px #c0392b;
-      }
-      to {
-        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff4d4d;
-      }
-    }
+        /* Intro Animation */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 3s forwards;
+            animation-delay: 3s;
+        }
 
-    .content {
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
-    }
+        .intro-text {
+            font-family: 'New Rocker', cursive;
+            font-size: 6rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            animation: introReveal 3s ease-in-out;
+            letter-spacing: 15px;
+        }
 
-    h2 {
-      border-left: 5px solid #ff0000;
-      padding-left: 15px;
-      margin-top: 40px;
-      color: #ff4d4d;
-    }
+        @keyframes introReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+                letter-spacing: 50px;
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                letter-spacing: 15px;
+            }
+        }
 
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
 
-    video {
-      width: 100%;
-      max-width: 800px;
-      display: block;
-      margin: 30px auto;
-      border: 3px solid #ff0000;
-      box-shadow: 0 0 30px #ff0000;
-    }
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+        }
 
-    footer {
-      background-color: #111;
-      color: #999;
-      text-align: center;
-      padding: 20px;
-      border-top: 2px solid #e74c3c;
-      font-size: 0.9em;
-    }
+        header h1 {
+            font-family: 'New Rocker', cursive;
+            font-size: 2.5em;
+            animation: glow 2s ease-in-out infinite alternate;
+            margin: 0;
+            cursor: pointer;
+        }
 
-    /* Hiệu ứng flicker cho chữ */
-    .flicker {
-      animation: flicker 2s infinite;
-    }
+        header h1:hover {
+            transform: scale(1.05);
+        }
 
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-      }
-      20%, 24%, 55% {
-        opacity: 0.3;
-      }
-    }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px var(--primary-color), 0 0 20px #c0392b;
+            }
+            to {
+                text-shadow: 0 0 20px #ff0000, 0 0 30px var(--secondary-color);
+            }
+        }
 
-    ul.members {
-      list-style: none;
-      padding-left: 0;
-      font-size: 1.1em;
-    }
+        .content {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(231, 76, 60, 0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 3.5s;
+        }
 
-    ul.members li {
-      margin-bottom: 10px;
-    }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .contact-info {
-      margin-top: 20px;
-      color: #e0e0e0;
-      font-size: 0.95em;
-    }
+        h2 {
+            font-family: 'New Rocker', cursive;
+            border-left: 5px solid #ff0000;
+            padding-left: 15px;
+            margin-top: 40px;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            cursor: pointer;
+        }
 
-    .contact-info strong {
-      color: #ff4d4d;
-    }
-  </style>
+        h2:hover {
+            transform: translateX(10px);
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 15px;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.5s ease;
+        }
+
+        h2:hover::after {
+            width: 50%;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-light);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            margin-bottom: 25px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        p:hover {
+            background-color: rgba(231, 76, 60, 0.1);
+            transform: translateY(-3px);
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 30px auto;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 30px #ff0000;
+            border-radius: 8px;
+            transition: all 0.5s ease;
+        }
+
+        video:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px #ff0000;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #999;
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid var(--primary-color);
+            font-size: 0.9em;
+            width: 100%;
+        }
+
+        /* Hiệu ứng flicker cho chữ */
+        .flicker {
+            animation: flicker 2s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.3;
+            }
+        }
+
+        ul.members {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1.1em;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        ul.members li {
+            margin-bottom: 10px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+            transition: all 0.3s ease;
+            color: var(--text-light);
+        }
+
+        ul.members li:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        ul.members strong {
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info strong {
+            color: var(--secondary-color);
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .blood-drop {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0;
+            animation: dripping 5s infinite;
+        }
+
+        @keyframes dripping {
+            0% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+            cursor: pointer;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-button i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(231, 76, 60, 0.8);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .intro-text {
+                font-size: 3rem;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            ul.members {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .floating-button {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <h1 class="flicker">BẠO LỰC HỌC ĐƯỜNG - NỖI ĐAU ÂM THẦM</h1>
-  </header>
-
-  <div class="content">
-    <h2>Thành Viên Thực Hiện</h2>
-    <ul class="members">
-      <li>🩸 <strong>Nguyễn Văn A</strong> – Biên kịch & Diễn xuất</li>
-      <li>🩸 <strong>Trần Thị B</strong> – Quay phim & Dựng video</li>
-      <li>🩸 <strong>Lê Văn C</strong> – Thiết kế trang web</li>
-      <li>🩸 <strong>Phạm Thị D</strong> – Lồng tiếng & Trình bày</li>
-    </ul>
-
-    <h2>Mức Độ Nghiêm Trọng</h2>
-    <p>
-      Bạo lực học đường không chỉ là những vết bầm ngoài da, mà còn là những vết sẹo tinh thần âm ỉ kéo dài suốt đời.
-      Nạn nhân có thể bị tổn thương tâm lý nặng nề, dẫn đến trầm cảm, sợ hãi, tự cô lập và thậm chí có những suy nghĩ tiêu cực như tự tử.
-    </p>
-
-    <p>
-      Một ánh mắt coi thường, một cú đấm sau lưng, hay những lời nói đầy ác ý có thể tàn phá một tâm hồn non nớt. 
-      Đây không phải là chuyện nhỏ – nó là hồi chuông cảnh báo cho toàn xã hội.
-    </p>
-
-    <h2>Video Tái Hiện Thực Tế</h2>
-    <video controls>
-      <source src="video/baoluc.mp4" type="video/mp4">
-      Trình duyệt của bạn không hỗ trợ video.
-    </video>
-
-    <h2>Thông Điệp</h2>
-    <p>
-      Hãy dừng lại trước khi bạn làm tổn thương ai đó. Một lời tử tế có thể cứu lấy một mạng sống.
-      Đừng để trường học trở thành nơi gieo rắc nỗi sợ hãi – hãy biến nó thành nơi của tình thương và hy vọng.
-    </p>
-</div>
-
-
-  <footer>
-    &copy; 2025 - Nhóm tuyên truyền chống bạo lực học đường<br>
-    <div class="contact-info">
-      📧 Gmail: <strong>thanhphongho2009@gmail.com</strong><br>
-      📞 SĐT: <strong>0817777577</strong>
+    <!-- Intro Overlay -->
+    <div class="intro-overlay">
+        <h1 class="intro-text">BULLYING</h1>
     </div>
-  </footer>
 
+    <!-- Floating Blood Drops -->
+    <div id="bloodDrops"></div>
+
+    <header>
+        <h1 class="flicker">BẠO LỰC HỌC ĐƯỜNG - NỖI ĐAU ÂM THẦM</h1>
+    </header>
+
+    <div class="content">
+        <h2>Thành Viên Thực Hiện</h2>
+        <ul class="members">
+            <li>🩸 <strong>Thanh Phong</strong> Biên kịch, đạo diễn, thiết kế trang web, đóng vai "Áo"</li>
+            <li>🩸 <strong>Đức Khải</strong> Đóng vai "Quần"</li>
+            <li>🩸 <strong>Gia Hy</strong> Đóng vai "Nhu"</li>
+            <li>🩸 <strong>Phước Nguyên</strong> Đóng vai "sigma"</li>
+            <li>🩸 <strong>Hồng Phúc</strong> Đóng vai "người nói xấu"</li>
+            <li>🩸 <strong>Lê Duy</strong> Đóng vai "sát thủ"</li>
+            <li>🩸 <strong>Anh Khôi</strong> Đóng vai "sát thủ"</li>
+            <li>🩸 <strong>Châu Anh</strong> Đóng vai "Chou Anh", editor</li>
+            <li>🩸 <strong>Trung Hiếu</strong> Đóng vai "background"</li>
+        </ul>
+
+        <h2>Mức Độ Nghiêm Trọng</h2>
+        <p>
+            Bạo lực học đường không chỉ là những vết bầm ngoài da, mà còn là những vết sẹo tinh thần âm ỉ kéo dài suốt đời.
+            Nạn nhân có thể bị tổn thương tâm lý nặng nề, dẫn đến trầm cảm, sợ hãi, tự cô lập và thậm chí có những suy nghĩ tiêu cực như tự tử.
+        </p>
+
+        <p>
+            Một ánh mắt coi thường, một cú đấm sau lưng, hay những lời nói đầy ác ý có thể tàn phá một tâm hồn non nớt. 
+            Đây không phải là chuyện nhỏ – nó là hồi chuông cảnh báo cho toàn xã hội.
+        </p>
+
+        <h2>Video Tái Hiện Thực Tế</h2>
+        <video controls id="bullyingVideo">
+            <source src="video/baoluc.mp4" type="video/mp4">
+        </video>
+
+        <h2>Thông Điệp</h2>
+        <p>
+            Hãy dừng lại trước khi bạn làm tổn thương ai đó. Một lời tử tế có thể cứu lấy một mạng sống.
+            Đừng để trường học trở thành nơi gieo rắc nỗi sợ hãi – hãy biến nó thành nơi của tình thương và hy vọng.
+        </p>
+    </div>
+
+    <div class="floating-button" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <footer>
+        &copy; 2025 - Nhóm tuyên truyền chống bạo lực học đường<br>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> Gmail: <strong>thanhphongho2009@gmail.com</strong></p>
+            <p><i class="fas fa-phone"></i> SĐT: <strong>0817777577</strong></p>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Create blood drop elements
+        function createBloodDrops() {
+            const container = document.getElementById('bloodDrops');
+            for (let i = 0; i < 20; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'blood-drop';
+                drop.style.left = `${Math.random() * 100}%`;
+                drop.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(drop);
+            }
+        }
+        
+        // Scroll to top button
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Interactive effects for headings
+        document.querySelectorAll('h2').forEach(heading => {
+            heading.addEventListener('click', function() {
+                this.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                setTimeout(() => {
+                    this.style.color = '';
+                }, 1000);
+            });
+        });
+
+        // Video effect
+        const video = document.getElementById('bullyingVideo');
+        video.addEventListener('play', function() {
+            document.body.style.background = 'radial-gradient(circle at center, #3f0d0d, #000)';
+        });
+        
+        video.addEventListener('pause', function() {
+            document.body.style.background = 'radial-gradient(circle at top left, #1a1a1a, #000000)';
+        });
+
+        // Initialize
+        window.addEventListener('load', function() {
+            createBloodDrops();
+            
+            // Mobile detection for touch events
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // Mobile-specific interactions
+                document.addEventListener('touchmove', function(e) {
+                    const touch = e.touches[0];
+                    const drop = document.createElement('div');
+                    drop.className = 'blood-drop';
+                    drop.style.left = `${touch.clientX}px`;
+                    drop.style.top = `${touch.clientY}px`;
+                    document.body.appendChild(drop);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(drop);
+                    }, 5000);
+                });
+            } else {
+                // Desktop-specific interactions
+                document.addEventListener('mousemove', function(e) {
+                    if (Math.random() < 0.05) {
+                        const drop = document.createElement('div');
+                        drop.className = 'blood-drop';
+                        drop.style.left = `${e.clientX}px`;
+                        drop.style.top = `${e.clientY}px`;
+                        document.body.appendChild(drop);
+                        
+                        setTimeout(() => {
+                            document.body.removeChild(drop);
+                        }, 5000);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
-</html>
+</html></div></video></ul></div>
