@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bạo Lực Học Đường - Mặt Tối Của Trường Lớp</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top left, #1a1a1a, #000000);
+      color: #e74c3c;
+      font-family: 'New Rocker', cursive;
+      text-shadow: 1px 1px 3px black;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: black;
+      padding: 30px;
+      text-align: center;
+      border-bottom: 2px solid #e74c3c;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #e74c3c, 0 0 20px #c0392b;
+      }
+      to {
+        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff4d4d;
+      }
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      border-left: 5px solid #ff0000;
+      padding-left: 15px;
+      margin-top: 40px;
+      color: #ff4d4d;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    video {
+      width: 100%;
+      max-width: 800px;
+      display: block;
+      margin: 30px auto;
+      border: 3px solid #ff0000;
+      box-shadow: 0 0 30px #ff0000;
+    }
+
+    footer {
+      background-color: #111;
+      color: #999;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #e74c3c;
+      font-size: 0.9em;
+    }
+
+    /* Hiệu ứng flicker cho chữ */
+    .flicker {
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.3;
+      }
+    }
+
+    ul.members {
+      list-style: none;
+      padding-left: 0;
+      font-size: 1.1em;
+    }
+
+    ul.members li {
+      margin-bottom: 10px;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+      color: #e0e0e0;
+      font-size: 0.95em;
+    }
+
+    .contact-info strong {
+      color: #ff4d4d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="flicker">BẠO LỰC HỌC ĐƯỜNG - NỖI ĐAU ÂM THẦM</h1>
+  </header>
+
+  <div class="content">
+    <h2>Thành Viên Thực Hiện</h2>
+    <ul class="members">
+      <li>🩸 <strong>Nguyễn Văn A</strong> – Biên kịch & Diễn xuất</li>
+      <li>🩸 <strong>Trần Thị B</strong> – Quay phim & Dựng video</li>
+      <li>🩸 <strong>Lê Văn C</strong> – Thiết kế trang web</li>
+      <li>🩸 <strong>Phạm Thị D</strong> – Lồng tiếng & Trình bày</li>
+    </ul>
+
+    <h2>Mức Độ Nghiêm Trọng</h2>
+    <p>
+      Bạo lực học đường không chỉ là những vết bầm ngoài da, mà còn là những vết sẹo tinh thần âm ỉ kéo dài suốt đời.
+      Nạn nhân có thể bị tổn thương tâm lý nặng nề, dẫn đến trầm cảm, sợ hãi, tự cô lập và thậm chí có những suy nghĩ tiêu cực như tự tử.
+    </p>
+
+    <p>
+      Một ánh mắt coi thường, một cú đấm sau lưng, hay những lời nói đầy ác ý có thể tàn phá một tâm hồn non nớt. 
+      Đây không phải là chuyện nhỏ – nó là hồi chuông cảnh báo cho toàn xã hội.
+    </p>
+
+    <h2>Video Tái Hiện Thực Tế</h2>
+    <video controls>
+      <source src="video/baoluc.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+
+    <h2>Thông Điệp</h2>
+    <p>
+      Hãy dừng lại trước khi bạn làm tổn thương ai đó. Một lời tử tế có thể cứu lấy một mạng sống.
+      Đừng để trường học trở thành nơi gieo rắc nỗi sợ hãi – hãy biến nó thành nơi của tình thương và hy vọng.
+    </p>
+</div>
+
+
+  <footer>
+    &copy; 2025 - Nhóm tuyên truyền chống bạo lực học đường<br>
+    <div class="contact-info">
+      📧 Gmail: <strong>thanhphongho2009@gmail.com</strong><br>
+      📞 SĐT: <strong>0817777577</strong>
+    </div>
+  </footer>
+
+</body>
+</html>
